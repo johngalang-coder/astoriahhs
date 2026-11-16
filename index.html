@@ -49,7 +49,7 @@ h2{font:700 21px/1.2 "Inter Tight",Inter,Helvetica,Arial,sans-serif;letter-spaci
 .live.off{background:var(--chip);color:var(--mute);font-weight:600}
 .addr{color:var(--y);font-weight:500;text-decoration:none;font-size:15px}
 .addr:hover{text-decoration:underline}
-.gmap{display:inline-block;margin:6px 0 2px;padding:5px 10px;border:1px solid var(--y);border-radius:999px;color:var(--y);font-size:13px;font-weight:600;text-decoration:none}
+.gmap{display:inline-block;margin:12px 0 0;padding:5px 10px;border:1px solid var(--y);border-radius:999px;color:var(--y);font-size:13px;font-weight:600;text-decoration:none}
 .gmap:active{opacity:.7}
 .when{font-size:15px;font-weight:600}
 .deal{margin:0;font-size:16px;color:#e2e2e0}
@@ -222,7 +222,6 @@ function render(){
     <div class="top"><div><h2>${esc(v.n)}</h2><div class="hood">${esc(v.h)}${here?` · <span class="dist">${mi(v).toFixed(1)} mi</span>`:""}</div></div>
       <span class="live ${s.k==="on"?"":s.k==="soon"?"soon":"off"}">${esc(s.txt)}</span></div>
     <a class="addr" href="${gm(v)}" target="_blank" rel="noopener">${esc(v.a)}</a>
-    <a class="gmap" href="${gm(v)}" target="_blank" rel="noopener">📍 Open in Google Maps</a>
     <div class="when">${esc(when(v))}</div>
     ${v.y?`<a class="yelp" href="https://www.yelp.com/biz/${v.y[2]}" rel="noopener">★ ${v.y[0].toFixed(1)} on Yelp · ${v.y[1].toLocaleString()} reviews</a>`:""}
     <p class="deal">${esc(v.d)}</p>
@@ -230,6 +229,7 @@ function render(){
     <ul class="prices">${v.p.map(([i,p])=>`<li><span>${esc(i)}</span><b>${esc(p)}</b></li>`).join("")}</ul>
     ${v.fn?`<p class="note">${esc(v.fn)}</p>`:""}${v.x?`<p class="note">${esc(v.x)}</p>`:""}
     <div class="src">${esc(v.ok)} · Deal source: ${esc(S[v.s])}</div>
+    <a class="gmap" href="${gm(v)}" target="_blank" rel="noopener">📍 Open in Google Maps</a>
   </article>`).join(""):'<div class="empty">No happy hours match. Try clearing a filter.</div>';
 }
 const tg=(id,k)=>document.getElementById(id).addEventListener("click",e=>{st[k]=!st[k];e.currentTarget.setAttribute("aria-pressed",st[k]);if(k==="tables"&&st.tables){st.bar=false;document.getElementById("fBar").setAttribute("aria-pressed","false")}if(k==="bar"&&st.bar){st.tables=false;document.getElementById("fTables").setAttribute("aria-pressed","false")}render()});
