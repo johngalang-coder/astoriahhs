@@ -49,6 +49,8 @@ h2{font:700 21px/1.2 "Inter Tight",Inter,Helvetica,Arial,sans-serif;letter-spaci
 .live.off{background:var(--chip);color:var(--mute);font-weight:600}
 .addr{color:var(--y);font-weight:500;text-decoration:none;font-size:15px}
 .addr:hover{text-decoration:underline}
+.gmap{display:inline-block;margin:6px 0 2px;padding:5px 10px;border:1px solid var(--y);border-radius:999px;color:var(--y);font-size:13px;font-weight:600;text-decoration:none}
+.gmap:active{opacity:.7}
 .when{font-size:15px;font-weight:600}
 .deal{margin:0;font-size:16px;color:#e2e2e0}
 .tags{display:flex;gap:6px;flex-wrap:wrap}
@@ -124,6 +126,7 @@ header p.upd{font-size:13px;margin-top:6px;text-align:left;border:0;padding:0}
 {
 const ALL=[0,1,2,3,4,5,6],WK=[1,2,3,4,5],MT=[1,2,3,4],FS=[5,6,0];
 const S={pig:"Pig Beach official site, 2026",hhh:"HappyHourHub, 2026",p5:"5pm.nyc, verified happy hour, 2026",sala:"Sala Astoria official site + Atly 2026",qr:"Queen's Room official site + Give Me Astoria",otr:"OpenTable listing (Ruta Oaxaca), 2026",san:"Atly + diner reports, 2025–26",gmad:"Give Me Astoria dive bar guide, Sept 2022",hut:"Week to Week Notes, Dec 2024",atly:"Atly, May 2026",tos:"Time Out New York",abnb:"Restaurant's own listing (Airbnb local guides)",gma18:"Give Me Astoria, 2018",gmac:"Give Me Astoria cocktail guide",hhn:"Happy Hour NYC, checked Oct–Nov 2026",inf:"The Infatuation, May 2026",gma:"Give Me Astoria, Sept 2025",pom:"The Pomeroy official site, 2026",par:"Parlay Astoria official site, 2026",otb:"OpenTable listing, 2026"};
+const gm=v=>"https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(v.n+", "+v.a);
 // seat: bar = bar-only / the venue is a bar; all = bar & tables; ? = not confirmed
 const V=[
 {n:"Mar's",h:"34th Ave",a:"34-21 34th Ave, Astoria, NY 11106",g:[40.7563,-73.9238],t:[[ALL,16.5,19]],d:"Art-deco seafood bar with one of Queens' best oyster happy hours.",food:1,seat:"?",p:[["Half-dozen oysters","$15"],["Dozen oysters","$30"],["Three cocktail shrimp","$18"],["Mignonette martini (with an oyster)","$15"],["Select cocktails","$13"],["Tap wines","$12"],["Wine carafes","$35–$70"]],s:"inf",x:"Older listings show weekday-only or Wed–Sun hours; the newest guide says daily 4:30–7pm.",ok:"Open — The Infatuation, May 2026"},
@@ -218,7 +221,8 @@ function render(){
   <article class="card">
     <div class="top"><div><h2>${esc(v.n)}</h2><div class="hood">${esc(v.h)}${here?` · <span class="dist">${mi(v).toFixed(1)} mi</span>`:""}</div></div>
       <span class="live ${s.k==="on"?"":s.k==="soon"?"soon":"off"}">${esc(s.txt)}</span></div>
-    <a class="addr" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(v.a)}" rel="noopener">${esc(v.a)}</a>
+    <a class="addr" href="${gm(v)}" target="_blank" rel="noopener">${esc(v.a)}</a>
+    <a class="gmap" href="${gm(v)}" target="_blank" rel="noopener">📍 Open in Google Maps</a>
     <div class="when">${esc(when(v))}</div>
     ${v.y?`<a class="yelp" href="https://www.yelp.com/biz/${v.y[2]}" rel="noopener">★ ${v.y[0].toFixed(1)} on Yelp · ${v.y[1].toLocaleString()} reviews</a>`:""}
     <p class="deal">${esc(v.d)}</p>
