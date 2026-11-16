@@ -125,7 +125,7 @@ header p.upd{font-size:13px;margin-top:6px;text-align:left;border:0;padding:0}
 
 <footer><div class="in">
   <p><b>Not listed (closed):</b> Sek'end Sun on Broadway (closed Dec 2024); The Highwater (now Hei Tiki &amp; Sushi Bar, which is listed); Lagano on Ditmars (closed 2024, now Spanglish NYC); The Sparrow Tavern (closed late 2024, now Wylie's); Tootles &amp; French, The Thirsty Koala and Mojave on Ditmars (recently closed, Nov 2026).</p>
-  <p><b>Check before you go.</b> Happy hours change often. Every listing shows where its details came from and when. "Seating not confirmed" means no source said whether the deal is bar-only — ask your bartender.</p>
+  <p><b>Check before you go.</b> Happy hours change often. "Seating not confirmed" means no source said whether the deal is bar-only — ask your bartender.</p>
   <p>Sources: <a href="https://www.pigbeachnyc.com/location/pig-beach-queens-ny/">Pig Beach Queens official site (2026)</a> · <a href="https://happy-hour.nyc/queens/astoria-happy-hour">Happy Hour NYC (checked Oct–Nov 2026)</a> · <a href="https://theinfatuation.com/new-york/guides/best-oyster-happy-hour-nyc-oyster-bar-nyc">The Infatuation, May 2026</a> · <a href="https://givemeastoria.com/2025/09/22/best-restaurant-deals-cheap-eats-in-the-neighborhood/">Give Me Astoria, Sept 2025</a> · <a href="https://www.thepomeroynyc.com/">The Pomeroy</a> · <a href="https://parlayastoria.com/happy-hour-astoria">Parlay Astoria</a> · <a href="https://www.opentable.ca/r/offcity-astoria">OpenTable (OffCity)</a> · <a href="https://www.atly.com/united-states/new-york/new-york/astoria/best-american-food-happy-hour">Atly</a> · <a href="https://www.timeout.com/newyork/bars/the-last-word">Time Out (The Last Word)</a> · <a href="https://givemeastoria.com/?p=71419">Give Me Astoria (cocktails)</a> · <a href="https://www.airbnb.com/things-to-do/places/265619">Tufino listing</a> · <a href="https://5pm.nyc/best-happy-hours-queens/">5pm.nyc (verified)</a> · <a href="https://www.salarestaurants.com/copy-of-home">Sala Astoria</a> · <a href="https://www.queensroomnyc.com/">Queen's Room</a> · <a href="https://www.opentable.com/r/ruta-oaxaca-astoria-queens">OpenTable (Ruta Oaxaca)</a> · <a href="https://www.atly.com/location/Sanfords">Atly (Sanfords)</a> · <a href="https://givemeastoria.com/2022/09/12/8-best-dive-bars-in-astoria-and-long-island-city-watering-holes-that-welcome-all/">Give Me Astoria dive bars (2022)</a> · <a href="https://weektoweeknotes.substack.com/p/pint-and-pen-and-paper-week-128-vol">Week to Week Notes (Hutch)</a></p>
 </div></footer>
 
@@ -237,7 +237,6 @@ function render(){
     <div class="tags">${v.food===null?'<span class="tag u">Food deal not confirmed</span>':v.food?'<span class="tag y">Food included</span>':'<span class="tag">Drinks only</span>'}${seatTag(v)}${v.sn?`<span class="tag">${esc(v.sn)}</span>`:""}</div>
     <ul class="prices">${v.p.map(([i,p])=>`<li><span>${esc(i)}</span><b>${esc(p)}</b></li>`).join("")}</ul>
     ${v.fn?`<p class="note">${esc(v.fn)}</p>`:""}${v.x?`<p class="note">${esc(v.x)}</p>`:""}
-    <div class="src">${esc(v.ok)} · Deal source: ${esc(S[v.s])}</div>
     <a class="gmap" href="${gm(v)}" target="_blank" rel="noopener">📍 Open in Google Maps</a>
   </article>`).join(""):'<div class="empty">No happy hours match. Try clearing a filter.</div>';
 }
